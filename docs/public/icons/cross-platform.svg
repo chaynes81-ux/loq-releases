@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#3178c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Three platform icons -->
+  <!-- Windows -->
+  <rect x="4" y="8" width="12" height="12" rx="1" fill="#e8f1fc"/>
+  <line x1="10" y1="8" x2="10" y2="20"/>
+  <line x1="4" y1="14" x2="16" y2="14"/>
+  <!-- Apple -->
+  <circle cx="24" cy="14" r="6" fill="#d1e3f8"/>
+  <path d="M24 8c0-2 2-4 4-4" stroke="#3178c6"/>
+  <!-- Linux/Tux -->
+  <ellipse cx="38" cy="14" rx="6" ry="6" fill="#bdd4f0"/>
+  <!-- Connecting line -->
+  <path d="M10 28v8h28v-8" fill="none"/>
+  <circle cx="24" cy="40" r="4" fill="#3178c6"/>
+</svg>

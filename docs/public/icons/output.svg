@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#3178c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Arrow pointing out -->
+  <path d="M24 8v24"/>
+  <path d="M16 24l8 8 8-8"/>
+  <!-- Output targets -->
+  <rect x="6" y="36" width="10" height="8" rx="1" fill="#e8f1fc"/>
+  <rect x="19" y="36" width="10" height="8" rx="1" fill="#d1e3f8"/>
+  <rect x="32" y="36" width="10" height="8" rx="1" fill="#bdd4f0"/>
+</svg>

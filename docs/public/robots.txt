@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loq.dev/sitemap.xml

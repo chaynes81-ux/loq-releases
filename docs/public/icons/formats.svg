@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#3178c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Multiple file icons stacked -->
+  <rect x="6" y="6" width="24" height="32" rx="2" fill="#e8f1fc"/>
+  <rect x="12" y="10" width="24" height="32" rx="2" fill="#d1e3f8"/>
+  <rect x="18" y="14" width="24" height="32" rx="2" fill="white"/>
+  <!-- Lines representing content -->
+  <line x1="24" y1="22" x2="36" y2="22"/>
+  <line x1="24" y1="28" x2="36" y2="28"/>
+  <line x1="24" y1="34" x2="32" y2="34"/>
+</svg>

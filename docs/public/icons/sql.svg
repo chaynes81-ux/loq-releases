@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#3178c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Database cylinder -->
+  <ellipse cx="24" cy="10" rx="16" ry="6"/>
+  <path d="M8 10v28c0 3.3 7.2 6 16 6s16-2.7 16-6V10"/>
+  <path d="M8 22c0 3.3 7.2 6 16 6s16-2.7 16-6"/>
+  <path d="M8 34c0 3.3 7.2 6 16 6s16-2.7 16-6"/>
+  <!-- SQL text -->
+  <text x="24" y="28" font-family="monospace" font-size="8" font-weight="bold" fill="#3178c6" stroke="none" text-anchor="middle">SQL</text>
+</svg>

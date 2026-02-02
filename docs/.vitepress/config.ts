@@ -4,6 +4,7 @@ export default defineConfig({
   title: 'loq',
   description: 'Log Query (loq) - Cross-platform SQL-based log analysis tool. A modern replacement for Microsoft Log Parser 2.2.',
   base: '/loq-releases/',
+  ignoreDeadLinks: true,
 
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],

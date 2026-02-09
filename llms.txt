@@ -1,0 +1,67 @@
+# loq - Cross-Platform Log Query Tool
+
+> LLM-friendly documentation for loq, a modern replacement for Microsoft Log Parser 2.2
+
+## Quick Start
+
+```bash
+# Basic query
+loq "SELECT * FROM data.csv WHERE status = 200"
+
+# With input/output formats
+loq -i:CSV -o:JSON "SELECT name, age FROM users.csv LIMIT 10"
+
+# Aggregate query
+loq "SELECT status, COUNT(*) FROM access.log GROUP BY status ORDER BY COUNT(*) DESC"
+```
+
+## Documentation Files
+
+For detailed reference, see the following files in this repository:
+
+### Main Reference (Start Here)
+- [llm-docs/REFERENCE.md](llm-docs/REFERENCE.md) - Complete overview with summaries of all features
+
+### Topic-Specific References
+- [llm-docs/sql.md](llm-docs/sql.md) - SQL syntax (SELECT, JOIN, UNION, CTEs, Window Functions)
+- [llm-docs/functions.md](llm-docs/functions.md) - All SQL functions (String, Math, DateTime, Aggregate)
+- [llm-docs/input-formats.md](llm-docs/input-formats.md) - Input formats (CSV, JSON, W3C, EVTX, S3, etc.)
+- [llm-docs/output-formats.md](llm-docs/output-formats.md) - Output formats (CSV, JSON, SQLite, Chart, etc.)
+- [llm-docs/cli.md](llm-docs/cli.md) - CLI options and common patterns
+- [llm-docs/dotnet.md](llm-docs/dotnet.md) - .NET bindings (Loq.Classic, Loq)
+- [llm-docs/ffi.md](llm-docs/ffi.md) - C/FFI for Python, Go, Ruby, etc.
+
+## Key Features
+
+- **SQL-based**: Full SQL support including JOINs, UNION, CTEs, Window Functions
+- **30+ Input Formats**: CSV, JSON, XML, W3C, Syslog, EVTX, S3, Parquet, etc.
+- **15+ Output Formats**: CSV, JSON, SQLite, PostgreSQL, Charts, etc.
+- **Cross-Platform**: Linux, macOS, Windows
+- **High Performance**: 2-5x faster than MS Log Parser 2.2
+- **Language Bindings**: .NET (C#), C/FFI (Python, Go, Ruby)
+
+## Common Patterns
+
+```sql
+-- Filter and sort
+SELECT * FROM logs.csv WHERE level = 'ERROR' ORDER BY timestamp DESC LIMIT 100
+
+-- Aggregate by group
+SELECT host, COUNT(*), AVG(response_time) FROM access.log GROUP BY host
+
+-- JOIN files
+SELECT a.*, b.name FROM orders.csv a JOIN customers.csv b ON a.customer_id = b.id
+
+-- Window function
+SELECT *, ROW_NUMBER() OVER (PARTITION BY category ORDER BY sales DESC) as rank FROM products.csv
+
+-- CTE for complex queries
+WITH errors AS (SELECT * FROM logs.csv WHERE level = 'ERROR')
+SELECT source, COUNT(*) FROM errors GROUP BY source
+```
+
+## Project Links
+
+- GitHub: https://github.com/chaynes81-ux/loq
+- Documentation: https://loq.dev/
+- Releases: https://github.com/chaynes81-ux/loq-releases/releases

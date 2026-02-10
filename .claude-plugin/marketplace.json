@@ -6,7 +6,10 @@
   "plugins": [
     {
       "name": "loq",
-      "source": ".."
+      "source": {
+        "source": "github",
+        "repo": "chaynes81-ux/loq-releases"
+      }
     }
   ]
 }

@@ -21,6 +21,6 @@
     "rust"
   ],
   "icon": "https://raw.githubusercontent.com/chaynes81-ux/loq-releases/main/assets/icon.png",
-  "commands": "../commands/",
-  "agents": "../agents/"
+  "commands": "./commands/",
+  "agents": "./agents/"
 }

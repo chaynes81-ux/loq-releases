@@ -6,11 +6,7 @@
   "plugins": [
     {
       "name": "loq",
-      "source": {
-        "source": "git",
-        "url": "https://github.com/chaynes81-ux/loq-releases.git",
-        "ref": "main"
-      }
+      "source": "./"
     }
   ]
 }

@@ -12,7 +12,7 @@
   "plugins": [
     {
       "name": "loq",
-      "source": "./.claude-plugin/plugin.json",
+      "source": "./plugin.json",
       "description": "SQL-based log analysis and query building for loq - a cross-platform replacement for Microsoft Log Parser 2.2. Includes /loq command for quick queries and loq-specialist agent for complex migrations.",
       "version": "1.0.0",
       "author": {

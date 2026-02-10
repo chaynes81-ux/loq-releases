@@ -7,8 +7,9 @@
     {
       "name": "loq",
       "source": {
-        "source": "github",
-        "repo": "chaynes81-ux/loq-releases"
+        "source": "git",
+        "url": "https://github.com/chaynes81-ux/loq-releases.git",
+        "ref": "main"
       }
     }
   ]

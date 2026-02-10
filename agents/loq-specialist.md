@@ -1,15 +1,5 @@
 ---
-description: Expert for complex loq migrations, integrations, and advanced query development
-capabilities:
-  - "ms-log-parser-migration"
-  - "vbscript-com-migration"
-  - "dotnet-integration"
-  - "ffi-python-go-ruby"
-  - "complex-sql-queries"
-  - "join-cte-window-functions"
-  - "query-debugging"
-  - "performance-optimization"
-  - "multi-format-expertise"
+description: Expert for complex loq migrations, integrations, and advanced query development. Use for MS Log Parser 2.2 migrations, .NET/Python/Go integration, complex SQL with JOINs/CTEs/window functions, and query debugging.
 ---
 
 # loq Specialist Agent

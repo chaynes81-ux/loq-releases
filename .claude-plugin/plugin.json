@@ -5,6 +5,6 @@
   "author": {
     "name": "Chris Haynes"
   },
-  "commands": ["./commands/loq.md"],
+  "skills": ["./skills/loq.md"],
   "agents": ["./agents/loq-specialist.md"]
 }

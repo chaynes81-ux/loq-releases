@@ -1,36 +1,12 @@
 {
-  "name": "loq-plugin-marketplace",
+  "name": "loq-marketplace",
   "owner": {
-    "name": "Chris Haynes",
-    "email": "chaynes81@gmail.com",
-    "url": "https://github.com/chaynes81-ux"
-  },
-  "description": "Official marketplace for loq Claude Code plugin",
-  "metadata": {
-    "description": "Marketplace hosting the loq plugin for Claude Code - SQL-based log analysis and query building for a cross-platform replacement of Microsoft Log Parser 2.2"
+    "name": "Chris Haynes"
   },
   "plugins": [
     {
       "name": "loq",
-      "source": "..",
-      "description": "SQL-based log analysis and query building for loq - a cross-platform replacement for Microsoft Log Parser 2.2. Includes /loq command for quick queries and loq-specialist agent for complex migrations.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Chris Haynes",
-        "email": "chaynes81@gmail.com",
-        "url": "https://github.com/chaynes81-ux"
-      },
-      "category": "data-analysis",
-      "tags": [
-        "log-analysis",
-        "sql",
-        "query-builder",
-        "microsoft-log-parser",
-        "iis-logs",
-        "data-analysis",
-        "cross-platform",
-        "rust"
-      ]
+      "source": ".."
     }
   ]
 }

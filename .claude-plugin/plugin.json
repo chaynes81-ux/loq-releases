@@ -1,26 +1,10 @@
 {
   "name": "loq",
   "version": "1.0.0",
-  "description": "SQL-based log analysis and query building for loq - a cross-platform replacement for Microsoft Log Parser 2.2",
+  "description": "SQL-based log analysis for loq",
   "author": {
-    "name": "Chris Haynes",
-    "email": "chaynes81@gmail.com",
-    "url": "https://github.com/chaynes81-ux"
+    "name": "Chris Haynes"
   },
-  "homepage": "https://github.com/chaynes81-ux/loq",
-  "repository": "https://github.com/chaynes81-ux/loq-releases",
-  "license": "MIT",
-  "keywords": [
-    "log-analysis",
-    "sql",
-    "query-builder",
-    "microsoft-log-parser",
-    "iis-logs",
-    "data-analysis",
-    "cross-platform",
-    "rust"
-  ],
-  "icon": "https://raw.githubusercontent.com/chaynes81-ux/loq-releases/main/assets/icon.png",
   "commands": "./commands/",
   "agents": "./agents/"
 }

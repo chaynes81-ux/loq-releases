@@ -37,12 +37,21 @@ using var lp = new LogQuery();
 |--------|-------------|-------------|
 | `Execute(string sql)` | `LogRecordSet` | Execute SQL query and return result set |
 | `ExecuteBatch(string sql)` | `long` | Execute query, return row count only (no iteration) |
+| `Execute(string sql, object inputFormat)` | `LogRecordSet` | Execute with input format context object |
+| `ExecuteBatch(string sql, object inputFormat, object outputFormat)` | `bool` | Execute batch with input/output format contexts |
 
 **Properties:**
 
 | Property | Type | Description |
 |----------|------|-------------|
 | `InputFormat` | `string` | Default input format: "CSV", "JSON", "W3C", "IIS", etc. |
+| `maxParseErrors` | `int` | Max parsing errors to continue on (-1 for unlimited) |
+| `lastError` | `int` | Last error code |
+| `inputUnitsProcessed` | `int` | Count of input units processed during last ExecuteBatch |
+| `outputUnitsProcessed` | `int` | Count of output units processed during last ExecuteBatch |
+| `errorMessages` | `LogStringCollection` | Collection of last error messages |
+| `versionMaj` | `int` | Major version (returns 2) |
+| `versionMin` | `int` | Minor version (returns 2) |
 
 **Example:**
 ```csharp
@@ -158,6 +167,9 @@ Represents a single row of data.
 | `IsNull(int index)` | `bool` | Check if NULL by column index |
 | `GetColumnType(int index)` | `int` | Get type constant for column |
 | `ToNativeString(string delimiter)` | `string` | Format record as delimited string |
+| `GetValueEx(string name)` | `object` | Get value with extended type info (typed: long, double, DateTime) |
+| `GetValueEx(int index)` | `object` | Get value with extended type info by index |
+| `ToNativeString(int index)` | `string` | Get string of single value at column index |
 
 **Access Patterns:**
 ```csharp
@@ -186,6 +198,96 @@ else
 string csv = record.ToNativeString(",");    // "John Doe,35,New York"
 string tsv = record.ToNativeString("\t");   // "John Doe\t35\tNew York"
 ```
+
+
+### Format Context Classes
+
+Loq.Classic provides format context classes that match the MS Log Parser COM interfaces. Pass them to `Execute()` or `ExecuteBatch()` to configure input/output format behavior.
+
+#### Input Format Contexts
+
+| Class | Namespace | COM Interface |
+|-------|-----------|---------------|
+| `COMCSVInputContext` | `Loq.Classic.InputFormats` | `ICOMCSVInputContext` |
+| `COMIISW3CInputContext` | `Loq.Classic.InputFormats` | `ICOMIISW3CInputContext` |
+| `COMIISNCSAInputContext` | `Loq.Classic.InputFormats` | `ICOMIISNCSAInputContext` |
+| `COMIISIISInputContext` | `Loq.Classic.InputFormats` | `ICOMIISIISInputContext` |
+| `COMIISBINInputContext` | `Loq.Classic.InputFormats` | `ICOMIISBINInputContext` |
+| `COMIISIISMSIDInputContext` | `Loq.Classic.InputFormats` | `ICOMIISIISMSIDInputContext` |
+| `COMHttpErrorInputContext` | `Loq.Classic.InputFormats` | `ICOMHttpErrorInputContext` |
+| `COMURLScanLogInputContext` | `Loq.Classic.InputFormats` | `ICOMURLScanLogInputContext` |
+| `COMTextLineInputContext` | `Loq.Classic.InputFormats` | `ICOMTextLineInputContext` |
+| `COMTextWordInputContext` | `Loq.Classic.InputFormats` | `ICOMTextWordInputContext` |
+| `COMFileSystemInputContext` | `Loq.Classic.InputFormats` | `ICOMFileSystemInputContext` |
+| `COMRegistryInputContext` | `Loq.Classic.InputFormats` | `ICOMRegistryInputContext` |
+| `COMTSVInputContext` | `Loq.Classic.InputFormats` | `ICOMTSVInputContext` |
+| `COMW3CInputContext` | `Loq.Classic.InputFormats` | `ICOMW3CInputContext` |
+| `COMNetMonInputContext` | `Loq.Classic.InputFormats` | `ICOMNetMonInputContext` |
+| `COMXMLInputContext` | `Loq.Classic.InputFormats` | `ICOMXMLInputContext` |
+
+**Example — CSV with custom options:**
+```csharp
+using Loq.Classic;
+using Loq.Classic.InputFormats;
+
+using var lp = new LogQuery();
+var csv = new COMCSVInputContext
+{
+    headerRow = false,
+    nSkipLines = 2,
+    iCodepage = 65001,
+    dtLines = 50,
+    comment = "#"
+};
+
+using var rs = lp.Execute("SELECT * FROM data.csv", csv);
+```
+
+#### Output Format Contexts
+
+| Class | Namespace | COM Interface |
+|-------|-----------|---------------|
+| `COMCSVOutputContext` | `Loq.Classic.OutputFormats` | `ICOMCSVOutputContext` |
+| `COMTSVOutputContext` | `Loq.Classic.OutputFormats` | `ICOMTSVOutputContext` |
+| `COMW3COutputContext` | `Loq.Classic.OutputFormats` | `ICOMW3COutputContext` |
+| `COMIISOutputContext` | `Loq.Classic.OutputFormats` | `ICOMIISOutputContext` |
+| `COMXMLOutputContext` | `Loq.Classic.OutputFormats` | `ICOMXMLOutputContext` |
+| `COMSQLOutputContext` | `Loq.Classic.OutputFormats` | `ICOMSQLOutputContext` |
+| `COMNativeOutputContext` | `Loq.Classic.OutputFormats` | `ICOMNativeOutputContext` |
+| `COMTemplateOutputContext` | `Loq.Classic.OutputFormats` | `ICOMTemplateOutputContext` |
+| `COMDataGridOutputContext` | `Loq.Classic.OutputFormats` | `ICOMDataGridOutputContext` |
+| `COMChartOutputContext` | `Loq.Classic.OutputFormats` | `ICOMChartOutputContext` |
+| `COMSYSLOGOutputContext` | `Loq.Classic.OutputFormats` | `ICOMSYSLOGOutputContext` |
+
+**Example — Batch with format contexts:**
+```csharp
+using Loq.Classic;
+using Loq.Classic.InputFormats;
+using Loq.Classic.OutputFormats;
+
+using var lp = new LogQuery();
+var csvIn = new COMCSVInputContext { headerRow = true };
+var sqlOut = new COMSQLOutputContext
+{
+    server = "localhost",
+    database = "logs",
+    createTable = true,
+    clearTable = true
+};
+
+lp.ExecuteBatch("SELECT * INTO results FROM access.log", csvIn, sqlOut);
+```
+
+### LogStringCollection Class
+
+Collection of strings for error messages. Implements `IEnumerable<string>`.
+
+| Member | Type | Description |
+|--------|------|-------------|
+| `Count` | `int` | Number of items |
+| `this[int index]` | `string` | Get item by index |
+
+Used by `LogQuery.errorMessages` and `LogRecordSet.errorMessages`.
 
 ### Complete Classic API Example
 

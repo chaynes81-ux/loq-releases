@@ -165,7 +165,8 @@ export default defineConfig({
           text: 'REST API',
           items: [
             { text: 'Overview', link: '/api/' },
-            { text: 'Endpoints', link: '/api/endpoints' }
+            { text: 'Endpoints', link: '/api/endpoints' },
+            { text: '.NET API', link: '/api/dotnet' }
           ]
         }
       ],

@@ -4,6 +4,22 @@ All notable changes to the loq Claude Code plugin will be documented in this fil
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [1.1.0] - 2026-03-30
+
+### Added
+- **Full COM API parity** for Loq.Classic .NET bindings
+  - `Execute(sql, inputFormat)` and `ExecuteBatch(sql, inputFormat, outputFormat)` overloads
+  - 16 input format context classes (CSV, W3C, TSV, XML, IIS, NCSA, BIN, HTTPERR, URLSCAN, TEXTLINE, TEXTWORD, FS, REG, W3C, NETMON, IISMSID)
+  - 11 output format context classes (CSV, TSV, W3C, IIS, XML, SQL, NAT, TPL, DATAGRID, CHART, SYSLOG)
+  - `LogQuery` properties: `maxParseErrors`, `lastError`, `inputUnitsProcessed`, `outputUnitsProcessed`, `errorMessages`, `versionMaj`, `versionMin`
+  - `LogRecordSet` properties: `lastError`, `inputUnitsProcessed`, `errorMessages`
+  - `LogRecord.GetValueEx()` with extended type info
+  - `LogRecord.ToNativeString(int index)` single-value formatting
+  - `LogStringCollection` matching `ILogStringCollection`
+- .NET API documentation page
+- Rust FFI: `loq_query_execute_with_config` and `loq_query_execute_batch_with_config` functions
+- JSON-based format configuration bridge between .NET and Rust
+
 
 ## [1.0.0] - 2026-02-10
 

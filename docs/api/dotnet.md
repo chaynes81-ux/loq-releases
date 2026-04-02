@@ -6,52 +6,15 @@ title: .NET API
 
 loq provides .NET bindings for programmatic log analysis. The `Loq.Classic` package is a drop-in replacement for the MS Log Parser 2.2 COM API. Works on **Windows and Linux** — no COM registration required.
 
+## Quick Start
 ## Installation
-
-### 1. Add the GitHub Packages NuGet source (one-time)
-
-```bash
-dotnet nuget add source "https://nuget.pkg.github.com/chaynes81-ux/index.json" \
-  --name "loq" \
-  --username YOUR_GITHUB_USERNAME \
-  --password YOUR_GITHUB_PAT
-```
-
-::: tip GitHub PAT
-Create a Personal Access Token at [github.com/settings/tokens](https://github.com/settings/tokens) with `read:packages` scope (under "Select scopes", check `read:packages`). Or use `GITHUB_TOKEN` in CI/CD.
-:::
-
-### 2. Add packages to your project
 
 ```bash
 dotnet add package Loq.Classic  # COM-compatible API (MS Log Parser drop-in)
 dotnet add package Loq          # Modern C# API (LINQ, async, streaming)
 ```
 
-### Available Packages
-
-| Package | Description | Includes |
-|---------|-------------|----------|
-| **Loq.Native** | Low-level P/Invoke bindings | `loq.dll` (Win) + `libloq.so` (Linux) bundled |
-| **Loq.Classic** | MS Log Parser COM-compatible API | References Loq.Native |
-| **Loq** | Modern LINQ-friendly API | References Loq.Native |
-
-The native Rust engine is bundled inside `Loq.Native` — no separate native library installation needed. .NET automatically loads the correct platform binary.
-
-### Alternative: Manual native library
-
-If not using NuGet, download binaries from [Releases](https://github.com/chaynes81-ux/loq-releases/releases) and place in your project:
-
-```
-your-app/
-├── runtimes/
-│   ├── win-x64/native/loq.dll
-│   └── linux-x64/native/libloq.so
-├── Program.cs
-└── your-app.csproj
-```
-
-## Quick Start
+No additional setup needed — packages are on [nuget.org](https://www.nuget.org/packages/Loq.Classic).
 
 ```csharp
 using Loq.Classic;

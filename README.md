@@ -89,3 +89,63 @@ Proprietary - All rights reserved.
 ## Support
 
 For issues or feature requests, please contact the development team.
+
+## .NET Library (NuGet)
+
+Use loq as an in-process library in .NET applications — no CLI process spawning needed. Works on **Windows and Linux**.
+
+### Setup
+
+```bash
+# Add the GitHub Packages source (one-time)
+dotnet nuget add source "https://nuget.pkg.github.com/chaynes81-ux/index.json" \
+  --name "loq" --username YOUR_GITHUB_USERNAME --password YOUR_GITHUB_PAT
+
+# Add to your project
+dotnet add package Loq.Classic   # MS Log Parser drop-in replacement
+# or
+dotnet add package Loq           # Modern LINQ-friendly API
+```
+
+> **Note:** Create a GitHub PAT with `read:packages` scope at [github.com/settings/tokens](https://github.com/settings/tokens).
+
+### Packages
+
+| Package | Description |
+|---------|-------------|
+| **[Loq.Native](https://github.com/chaynes81-ux/loq/packages)** | P/Invoke bindings + bundled native libraries (Win + Linux) |
+| **[Loq.Classic](https://github.com/chaynes81-ux/loq/packages)** | MS Log Parser COM-compatible API |
+| **[Loq](https://github.com/chaynes81-ux/loq/packages)** | Modern C# API with LINQ and strong typing |
+
+### Example
+
+```csharp
+using Loq.Classic;
+using Loq.Classic.InputFormats;
+
+using var lp = new LogQuery();
+var w3c = new COMIISW3CInputContext { iCodepage = 65001 };
+
+using var rs = lp.Execute(
+    "SELECT c-ip, sc-status, cs(User-Agent) FROM 'access.log' WHERE sc-status >= 500",
+    w3c
+);
+
+while (!rs.AtEnd)
+{
+    var rec = rs.GetRecord();
+    Console.WriteLine($"{rec.GetValue("c-ip")}: {rec.GetInt("sc-status")}");
+    rs.MoveNext();
+}
+```
+
+See the [.NET API documentation](https://chaynes81-ux.github.io/loq-releases/api/dotnet) for full reference.
+
+### FFI Native Libraries
+
+For direct FFI integration (Python, Go, Ruby, etc.):
+
+| Platform | Download |
+|----------|----------|
+| Windows (x64) | [loq-ffi-windows-x64.zip](https://github.com/chaynes81-ux/loq-releases/releases/latest/download/loq-ffi-windows-x64.zip) |
+| Linux (x64) | [libloq-linux-x64.tar.gz](https://github.com/chaynes81-ux/loq-releases/releases/latest/download/libloq-linux-x64.tar.gz) |

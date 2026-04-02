@@ -18,7 +18,7 @@ dotnet nuget add source "https://nuget.pkg.github.com/chaynes81-ux/index.json" \
 ```
 
 ::: tip GitHub PAT
-Create a Personal Access Token at [github.com/settings/tokens](https://github.com/settings/tokens) with `read:packages` scope. Or use `GITHUB_TOKEN` in CI/CD.
+Create a Personal Access Token at [github.com/settings/tokens](https://github.com/settings/tokens) with `read:packages` scope (under "Select scopes", check `read:packages`). Or use `GITHUB_TOKEN` in CI/CD.
 :::
 
 ### 2. Add packages to your project

@@ -107,7 +107,7 @@ dotnet add package Loq.Classic   # MS Log Parser drop-in replacement
 dotnet add package Loq           # Modern LINQ-friendly API
 ```
 
-> **Note:** Create a GitHub PAT with `read:packages` scope at [github.com/settings/tokens](https://github.com/settings/tokens).
+> **Note:** Create a GitHub PAT with `read:packages` scope (under "Select scopes", check `read:packages`) at [github.com/settings/tokens](https://github.com/settings/tokens).
 
 ### Packages
 

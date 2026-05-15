@@ -14,6 +14,7 @@ Download the latest version for your platform:
 | macOS (Intel) | [loq-macos-x64.tar.gz](https://github.com/chaynes81-ux/loq-releases/releases/latest/download/loq-macos-x64.tar.gz) |
 | macOS (Apple Silicon) | [loq-macos-arm64.tar.gz](https://github.com/chaynes81-ux/loq-releases/releases/latest/download/loq-macos-arm64.tar.gz) |
 | Linux (x64) | [loq-linux-x64.tar.gz](https://github.com/chaynes81-ux/loq-releases/releases/latest/download/loq-linux-x64.tar.gz) |
+| Linux (arm64 / Graviton) | [loq-linux-arm64.tar.gz](https://github.com/chaynes81-ux/loq-releases/releases/latest/download/loq-linux-arm64.tar.gz) |
 
 ### Windows COM DLL
 
